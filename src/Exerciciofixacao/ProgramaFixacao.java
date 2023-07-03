@@ -15,7 +15,7 @@ public class ProgramaFixacao {
 
 	public static void main(String[] args) throws ParseException {
 
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); //para formatar a data que vai vir da classe cliente
 	
 		Scanner scanner = new Scanner(System.in);
 
@@ -25,15 +25,17 @@ public class ProgramaFixacao {
 		System.out.print("Email: ");
 		String emailString = scanner.next();
 		System.out.print("Data de nascimento  (DD/MM/YYYY): ");
-		Date Daniversario = sdf.parse(scanner.next());
+		Date Daniversario = sdf.parse(scanner.next());  //sdf.parse para tranformar o string digitado em tipo Date
 		
-		Cliente cliente = new Cliente(nomeString, emailString, Daniversario );
+		//instanciado cliente a partir do dados digitados acima
+		Cliente cliente = new Cliente(nomeString, emailString, Daniversario ); 
 		
 		System.out.println("Insira os dados do Pedido: ");
 		System.out.print("Status: ");
-		Status statusString = Status.valueOf(scanner.next());
+		Status statusString = Status.valueOf(scanner.next()); //value.Of converter string digitado em tipo enum Status
 		
-		Pedido pedido = new Pedido(new Date(), statusString, cliente);
+		//instanciado o objeto Pedido associado ao objeto cliente
+		Pedido pedido = new Pedido(new Date(), statusString, cliente);//new Date() para instancia horario e data do sistema
 		
 		System.out.print("Quantos itens terá o pedido? ");
 		int n = scanner.nextInt();
@@ -45,14 +47,15 @@ public class ProgramaFixacao {
 			String nomeProduto = scanner.nextLine();
 			System.out.print("Preço do produto: ");
 			double precoProduto = scanner.nextDouble();
-			
-			Produto produto = new Produto(nomeProduto, precoProduto);
-			
 			System.out.print("Quantidade: ");
 			int quantidadeProduto = scanner.nextInt();
 			
-			ItemPedido itemPedido = new ItemPedido(quantidadeProduto, precoProduto, produto);
-
+			//instanciar objeto Produto
+			Produto produto = new Produto(nomeProduto, precoProduto); 
+			//Instanciar objeto itemPedido associado com o objeto produto
+			ItemPedido itemPedido = new ItemPedido(quantidadeProduto, precoProduto, produto); 
+           
+			//para adicionar o itemPedido ao Pedido 
 			pedido.addPedidos(itemPedido);
 		}
 		

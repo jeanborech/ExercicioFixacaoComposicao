@@ -12,11 +12,11 @@ public class Pedido {
 	private Date momento;
 	private Status status;
 	
-	private Cliente cliente;
+	private Cliente cliente; //tem um
+	private List<ItemPedido> pedidos = new ArrayList<>(); //tem vários
+
 	private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 	
-	private List<ItemPedido> pedidos = new ArrayList<>(); 
-
 	public Pedido() {
 	}
 
@@ -57,12 +57,9 @@ public class Pedido {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-
-
-	public List<ItemPedido> getPedidos() {
-		return pedidos;
-	}
-
+     //e sem get senão dara acesso a lista ao metodos de inserir e remover
+    //tipo lista não usamos set e sim metodos para adicionar e remover itens da lista
+	
 	public void addPedidos(ItemPedido pItemPedido) {
     	pedidos.add(pItemPedido);
     }
@@ -72,8 +69,8 @@ public class Pedido {
     
     	public double total() {
     	double soma = 0.0;
-    	for (ItemPedido item : pedidos) {
-    		soma += item.subTotal();	
+    	for (ItemPedido item : pedidos) {  //para cada ItemPedido do tipo item na list pedidos
+    		soma += item.subTotal();	   //acumula o valor na soma com o subTotal da classe ItemPedido
 		}
 		return soma;
     	}

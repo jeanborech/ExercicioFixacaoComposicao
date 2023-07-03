@@ -5,7 +5,7 @@ public class ItemPedido {
 	private Integer quantidade;
 	private Double preco;
 	
-	private Produto produto;
+	private Produto produto; //composição entre os objetos. criar uma referencia do item produto com item pedido para navegar entre eles
 	
 	public ItemPedido() {
 	}
@@ -56,8 +56,9 @@ public class ItemPedido {
 
 	@Override
 	public String toString() {
-		return produto.getNome() +", $" 
-				+ String.format("%.2f", preco) 
+		return produto.getNome()  //navegar no produto e getNome para pegar o nome 
+				+", $" 
+				+ String.format("%.2f", preco)   //String.format para formatar com 2 casas decimais
 				+ ", Quantity: " 
 				+ quantidade + 
 				", Subtotal: $" 

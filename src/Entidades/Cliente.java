@@ -9,7 +9,7 @@ public class Cliente {
 	private String email;
 	private Date aniversario;
 	
-	private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+	private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); //formatação de data 
 	
 	public Cliente(){
 	}
@@ -46,6 +46,6 @@ public class Cliente {
 
 	@Override
 	public String toString() {
-		return  nome +" " + (sdf.format(aniversario)) + " - " + email;
+		return  nome +" " + (sdf.format(aniversario)) + " - " + email; //imprimir dados do cliente
 	}
 }
